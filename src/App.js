@@ -1,21 +1,18 @@
-import { useMemo } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Articles from 'pages/articles';
-import { useAxios } from 'hooks/axios';
+import ArticleDetails from 'pages/articleDetails';
 import './App.css';
 
 const App = () => {
-  const { data, error, loaded } = useAxios(
-    `https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=${process.env.REACT_APP_NYT_KEY}`,
-    'get'
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Articles />} />
+        <Route path="/article-details" element={<ArticleDetails />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
-  const articles = useMemo(() => {
-    return data?.results || [];
-  }, [data]);
-
-  if (loaded) {
-    return error ? <span>Error: {error}</span> : <Articles articles={articles} />;
-  }
-  return <span>Loading...</span>;
 };
 
 export default App;

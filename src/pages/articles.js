@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useAxios } from 'hooks/axios';
 import ArticleCard from 'components/articleCard';
-import PropTypes from 'prop-types';
 
-export default function Articles({ articles }) {
-  return (
-    <>
+export default function Articles() {
+  const { REACT_APP_NYT_MOST_VIEWED_API, REACT_APP_NYT_KEY } = process.env;
+  const { data, error, loaded } = useAxios(
+    `${REACT_APP_NYT_MOST_VIEWED_API}${REACT_APP_NYT_KEY}`,
+    'get'
+  );
+  const articles = useMemo(() => {
+    return data?.results || [];
+  }, [data]);
+
+  if (loaded) {
+    return error ? (
+      <span>Error: {error}</span>
+    ) : (
       <div className="wrapper">
         {articles.map((article) => (
           <div key={article.id}>
@@ -12,10 +23,7 @@ export default function Articles({ articles }) {
           </div>
         ))}
       </div>
-    </>
-  );
+    );
+  }
+  return <span className="loading">Loading...</span>;
 }
-
-Articles.propTypes = {
-  articles: PropTypes.array.isRequired
-};

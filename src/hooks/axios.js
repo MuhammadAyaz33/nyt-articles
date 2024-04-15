@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
-const useAxios = (url, method, payload) => {
+
+export const useAxios = (url, method, payload) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [loaded, setLoaded] = useState(false);
@@ -29,5 +30,3 @@ const useAxios = (url, method, payload) => {
 
   return { cancel, data, error, loaded };
 };
-
-export { useAxios };
