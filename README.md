@@ -5,7 +5,7 @@ In the project directory, you can run:
 ### `Project Setup`
 
 1. First step is to clone the repo accoring to your github clone settings.
-2. Install the dependencies by running the following commands
+2. Install the dependencies by running the commands
    yarn install / npm install
 3. Follow the steps bellow for more options
 
