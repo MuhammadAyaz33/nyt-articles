@@ -4,7 +4,7 @@ In the project directory, you can run:
 
 ### `Project Setup`
 
-1. First step is to clone the repo accoring to your github clone settings.
+1. Clone the repo and head to the root directory
 2. Install the dependencies by running the commands
    yarn install / npm install
 3. Follow the steps bellow for more options
@@ -28,9 +28,8 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 ### `npm run format`
-
-This command will fix all the linting issues in the code.
+It enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.
 
 ### `npm run cypress:open`
 
-This command will open Cypress right up for you. Follow the steps on the platform to setuop the environment for you.
+This command will open Cypress right up for you. Follow the steps on the platform to setuop the environment for your test.
