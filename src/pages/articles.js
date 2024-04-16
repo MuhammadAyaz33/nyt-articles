@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useAxios } from 'hooks/axios';
+import { useAxios } from 'hooks/useAxios';
 import ArticleCard from 'components/articleCard';
 
 export default function Articles() {
