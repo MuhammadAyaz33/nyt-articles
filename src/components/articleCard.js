@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useRoute } from 'hooks/useRoute';
 
 const ArticleCard = ({ article }) => {
+  const { setItem } = useLocalStorage('article');
   // I have checked the available apis but did'nt found any api to fetch single article
   const handleCard = (article) => {
-    localStorage.setItem('article', JSON.stringify(article));
-    window.location.replace('/article-details');
+    setItem(article);
+    useRoute('/article-details');
   };
 
   return (

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 const ArticleDetails = () => {
-  const [article] = useState(() => {
-    // getting stored values from localstorage (Can use redux to set/get data fro state => best practise)
-    return JSON.parse(localStorage.getItem('article'));
-  });
+  const { getItem } = useLocalStorage('article');
+  const article = getItem();
+
   const bannerImage = article?.media[0]['media-metadata'][0].url;
   return (
     <div className="wrapper">
